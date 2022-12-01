@@ -1,11 +1,26 @@
- package com.example.jobapp
+package com.example.jobapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
+import com.example.jobapp.databinding.ActivityMainBinding
+import com.example.jobapp.network.RetroInstance
+import com.example.jobapp.repository.JobRepository
+import com.example.jobapp.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
+        supportActionBar?.hide()
+
+        val repository = JobRepository(RetroInstance.retroInstance())
+        val viewModelFactory = MainViewModelFactory(application, repository)
+        mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+
     }
 }
