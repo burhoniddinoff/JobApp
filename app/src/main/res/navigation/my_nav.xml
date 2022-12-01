@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.jobapp.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.jobapp.fragment.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/jobFragment"
+        android:name="com.example.jobapp.fragment.JobFragment"
+        android:label="fragment_job"
+        tools:layout="@layout/fragment_job" />
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.example.jobapp.fragment.SavedFragment"
+        android:label="fragment_saved"
+        tools:layout="@layout/fragment_saved" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.jobapp.fragment.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+</navigation>
