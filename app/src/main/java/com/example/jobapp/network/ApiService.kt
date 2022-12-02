@@ -6,8 +6,13 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET("api/remote-jobs")
+    @GET("remote-jobs")
     suspend fun getRemoteJobs(
         @Query("limit") limit: Int = 25
+    ): Response<RemoteJob>
+
+    @GET("remote-jobs")
+    suspend fun searchRemoteJob(
+        @Query("search") query: String
     ): Response<RemoteJob>
 }

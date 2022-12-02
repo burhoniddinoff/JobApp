@@ -13,7 +13,6 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems
 
 class MainFragment : Fragment(R.layout.fragment_main) {
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
@@ -22,7 +21,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         _binding = FragmentMainBinding.bind(view)
 
         initViews()
-
     }
 
     private fun initViews() {
@@ -42,5 +40,4 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onDestroyView()
         _binding = null
     }
-
 }

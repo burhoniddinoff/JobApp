@@ -2,22 +2,24 @@ package com.example.jobapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.jobapp.databinding.ItemLayoutBinding
-import com.example.jobapp.model.Job
+import com.example.jobapp.model.JobToSave
 
-class JobAdapter: ListAdapter<Job, JobAdapter.JobViewHolder>(DiffCallBack()) {
-    lateinit var onClick: (Job) -> Unit
+class JobToSaveAdapter : ListAdapter<JobToSave, JobToSaveAdapter.JobViewHolder>(DiffCallBack()) {
+    lateinit var onClick: (JobToSave) -> Unit
+    lateinit var onDeleteClick: (JobToSave) -> Unit
 
-    private class DiffCallBack : DiffUtil.ItemCallback<Job>() {
-        override fun areItemsTheSame(oldItem: Job, newItem: Job): Boolean {
+    private class DiffCallBack : DiffUtil.ItemCallback<JobToSave>() {
+        override fun areItemsTheSame(oldItem: JobToSave, newItem: JobToSave): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Job, newItem: Job): Boolean {
+        override fun areContentsTheSame(oldItem: JobToSave, newItem: JobToSave): Boolean {
             return oldItem == newItem
         }
     }
@@ -38,7 +40,7 @@ class JobAdapter: ListAdapter<Job, JobAdapter.JobViewHolder>(DiffCallBack()) {
 
     inner class JobViewHolder(private val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(job: Job) {
+        fun bind(job: JobToSave) {
             binding.apply {
                 Glide.with(ivCompanyLogo)
                     .load(job.companyLogoUrl)
@@ -49,6 +51,11 @@ class JobAdapter: ListAdapter<Job, JobAdapter.JobViewHolder>(DiffCallBack()) {
                 tvJobType.text = job.jobType
                 tvJobLocation.text = job.candidateRequiredLocation
                 tvCompanyName.text = job.companyName
+                btnDelete.isVisible = true
+
+                btnDelete.setOnClickListener {
+                    onDeleteClick(job)
+                }
             }
             itemView.setOnClickListener {
                 onClick.invoke(job)
