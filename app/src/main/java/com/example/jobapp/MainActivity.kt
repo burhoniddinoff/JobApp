@@ -7,6 +7,7 @@ import com.example.jobapp.databinding.ActivityMainBinding
 import com.example.jobapp.network.RetroInstance
 import com.example.jobapp.repository.JobRepository
 import com.example.jobapp.viewmodel.MainViewModel
+import com.example.jobapp.viewmodel.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
